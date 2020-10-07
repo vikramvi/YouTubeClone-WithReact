@@ -12,6 +12,10 @@ class App extends React.Component {
         selectedVideo: null,
     }
 
+    componentDidMount() {
+        this.handleSubmit('meditation');
+    }
+
     onVideoSelect = (video) => {
         this.setState({ selectedVideo: video });
     }

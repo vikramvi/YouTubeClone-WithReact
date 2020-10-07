@@ -12,6 +12,11 @@ class App extends React.Component {
         selectedVideo: null,
     }
 
+    onVideoSelect = (video) => {
+        this.setState({ selectedVideo: video });
+    }
+
+
     handleSubmit = async (searchTerm) => {
         //console.log('key value  ' + process.env.REACT_APP_API_KEY);
 
@@ -45,7 +50,7 @@ class App extends React.Component {
                             <VideoDetails video={selectedVideo} />
                         </Grid>
                         <Grid item xs={4}>
-                            <VideoList videos={videos} />
+                            <VideoList videos={videos} onVideoSelect={this.onVideoSelect} />
                         </Grid>
                     </Grid>
                 </Grid>

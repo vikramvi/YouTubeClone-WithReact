@@ -9,7 +9,9 @@ const VideoList = ({ videos }) => {
     );
 
     return (
-        listOfVideos
+        <Grid container spacing={10}>
+            {listOfVideos}
+        </Grid>
     )
 }
 

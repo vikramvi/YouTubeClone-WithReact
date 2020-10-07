@@ -2,12 +2,13 @@ import React from 'react';
 
 import { Grid } from '@material-ui/core';
 import youtube from './api/youtube';
-import { SearchBar, VideoDetails } from './components';
+import { SearchBar, VideoDetails, VideoList } from './components';
 
 class App extends React.Component {
 
+    //state object
     state = {
-        video: [],
+        videos: [],
         selectedVideo: null,
     }
 
@@ -23,12 +24,15 @@ class App extends React.Component {
             }
         });
 
-
-        this.setState({ video: response.data.items, selectedVideo: response.data.items[0] });
+        //update state object from API response data
+        this.setState({ videos: response.data.items, selectedVideo: response.data.items[0] });
+        console.log(this.state);
     }
 
     render() {
-        const { selectedVideo } = this.state;
+        //destructure from the state to use as props
+        const { selectedVideo, videos } = this.state;
+
         return (
             < Grid justify="center" container spacing={10} >
                 <Grid item xs={12}>
@@ -41,7 +45,7 @@ class App extends React.Component {
                             <VideoDetails video={selectedVideo} />
                         </Grid>
                         <Grid item xs={4}>
-                            {/* VIDEO LIST */}
+                            <VideoList videos={videos} />
                         </Grid>
                     </Grid>
                 </Grid>
